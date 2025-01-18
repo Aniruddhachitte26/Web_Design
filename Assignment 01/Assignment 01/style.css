@@ -1,0 +1,271 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background: #000;
+
+}
+
+
+.main {
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url('image.png');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(6, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.icon .logo {
+    color: #ff7200;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+}
+
+.menu ul li {
+    position: relative;
+    margin: 0 20px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.4s ease-in-out;
+}
+
+.menu ul li a:hover {
+    color: #ff7200;
+}
+
+.menu ul .dropdown {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.menu ul li:hover .dropdown {
+    display: block;
+}
+
+.menu ul .dropdown li {
+    margin: 5px 0;
+    padding: 5px 20px;
+}
+
+.menu ul .dropdown li a {
+    font-size: 14px;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.menu ul .dropdown li a:hover {
+    color: #ff7200;
+}
+
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.srch {
+    font-family: 'Arial', sans-serif;
+    width: 200px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #ff7200;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.srch:focus {
+    outline: none;
+}
+
+.btn {
+    height: 40px;
+    padding: 0 20px;
+    background: #ff7200;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+
+.hero {
+    margin-top: 75px;
+    text-align: left;
+    padding: 100px 50px;
+}
+
+.hero h1 {
+    font-family: 'Times New Roman', serif;
+    font-size: 50px;
+    line-height: 1.3;
+    letter-spacing: 1.5px;
+}
+
+.hero h1 span {
+    color: #ff7200;
+    font-size: 60px;
+}
+
+.hero .description {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    max-width: 600px;
+}
+
+.hero .cta {
+    display: inline-block;
+    margin-top: 20px;
+    background: #ff7200;
+    color: #000;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.hero .cta:hover {
+    background: #fff;
+    color: #ff7200;
+}
+
+
+.subscribe {
+    padding-top: 100px;
+    background: rgba(0, 0, 0, 0);
+    text-align: center;
+}
+
+.form-container {
+    width: 30%; 
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%; 
+    right: 5%; 
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+}
+
+
+.form-container h2 {
+    font-size: 24px;
+    color: #ff7200;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.form-container input,
+.form-container select {
+    width: 100%; 
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ff7200;
+    background: transparent;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    outline: none;
+    border-bottom: 2px solid #fff;
+}
+
+
+.form-container .btnn {
+    width: 100%;
+    padding: 10px;
+    background: #ff7200;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.form-container .btnn:hover {
+    background: #ebe98e;
+    color: #efefef;
+}
+
+
+.icons a {
+    margin: 0 5px;
+    color: #fff;
+    font-size: 24px;
+    transition: 0.3s ease;
+}
+
+.icons a:hover {
+    color: #ff7200;
+}
+
+
+footer {
+    text-align: center;
+    padding: 15px 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 14px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>WanderVista</title>
+</head>
+<body>
+    <div class="main">
+        <header>
+            <div class="navbar">
+                <div class="icon">
+                    <h2 class="logo">WanderVista</h2>
+                </div>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li>
+                            <a href="#">About</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Our Story</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Careers</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Services</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Guided Tours</a></li>
+                                <li><a href="#">Travel Packages</a></li>
+                                <li><a href="#">Custom Itineraries</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">World</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="search">
+                    <input class="srch" type="search" placeholder="Search...">
+                    <button class="btn">Search</button>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="hero">
+                <div class="content">
+                    <h2>Welcome to WanderVista<br></h2>
+                    <aside class="description">
+                        <h2>Why Choose WanderVista?</h2>
+                        <p>Explore the world's most iconic destinations with expert-curated packages that blend adventure, culture, and relaxation.</p>
+                    </aside>
+                    <article class="description">
+                        <h4>New York Skyline Package</h4>
+                        <p>Experience the vibrant energy of New York City, its stunning skyline, and iconic landmarks. This package offers a perfect blend of city sightseeing and local experiences.</p>
+                        <ul>
+                            <li><strong>Duration:</strong> 7 Days</li>
+                            <li><strong>Highlights:</strong> Times Square, Statue of Liberty, Central Park, Empire State Building</li>
+                            <li><strong>Price:</strong> $2500</li>
+                        </ul>
+                    </article>
+
+                    <button class="cta"><a href="page2.html">Join Us</a></button>
+                </div>
+                <div class="form-container">
+                    <h2>Plan Your Visit</h2>
+                    <form>
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <label for="city">City to Visit:</label>
+                        <input list="Cities" name="City" id="City">
+                            <datalist id="Cities">
+                                <option value="Boston">
+                                <option value="Seattle">
+                                <option value="NewYork">
+                                <option value="Los Angeles">
+                                <option value="Chicago">
+                            </datalist>
+                        </form>
+                        <button type="submit" class="btnn">Submit</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 WanderVista. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
