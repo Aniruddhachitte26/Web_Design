@@ -1,0 +1,21 @@
+body {
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+}
+/* Disable submit button initially */
+#button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Style for table rows when selected */
+.selected {
+  background-color: yellow;
+}
+
+/* Hide expanded rows initially */
+.dropDownTextArea {
+  display: none;
+}
+h2{
+  padding-left: 50px;
+}
