@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <title>Feedback</title>
+  <style>
+    label {  
+        float: left;
+        width: 150px;
+    }
+    #container{
+        width: 700px;
+        margin: auto;
+        background-color: beige;
+    	padding: 20px;
+    }
+    main{
+        padding: 50px;
+    }
+    .error {
+        color: red;
+        font-size: 0.9em;
+        display: block;
+        margin-top: 5px;
+        width: 100%; 
+        display: block;
+    }
+    .dynamic-checkbox-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .field-container {
+        display: flex;
+        flex-wrap: wrap; 
+        align-items: center; 
+        gap: 10px; 
+        margin-bottom: 15px;
+    }
+
+    .field-container textarea,
+    .field-container input[type="text"],
+    .field-container select {
+        min-width: 250px; 
+    }
+
+    table {
+        width: 100%;
+        margin-top: 30px;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+  </style>
+ </head>
+ <body>
+ <div id="container">
+	 <main>
+	 <h2>Feedback</h2>
+	 <h3>Love something? Hate something? Let us know!</h3>
+		 Note: Fields marked with an asterisk(*) are mandatory.
+		 <br><br>
+		 <form method="post" novalidate>
+			 
+			<div class="field-container">
+				<label>Title*:</label>
+				<div id="titleDiv">
+					<input type="radio" name="title" id="miss" value="miss" required="required"/>Miss
+					<input type="radio" name="title" id="mr" value="mr" required="required"/>Mr.
+					<input type="radio" name="title" id="mrs" value="mrs" required="required"/>Mrs.
+				</div>
+				<span id="titleError" class="error"></span>
+			</div>
+
+			<div class="field-container">
+				<label for="firstName">First Name*:</label>
+				<input type="text" name="firstName" id="firstName" placeholder="First Name" />
+				<span id="firstNameError" class="error"></span>
+			</div>
+
+			<div class="field-container">
+				<label for="lastName">Last Name*:</label>
+				<input type="text" name="lastName" id="lastName" placeholder="Last Name" />
+				<span id="lastNameError" class="error"></span>
+			</div>
+
+			<div class="field-container">
+				<label for="emailId">Email Id*:</label>
+				<input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" />
+				<span id="emailIdError" class="error"></span>
+			</div>
+
+			<div class="field-container">
+				<label for="phoneNumber">Phone Number*:</label>
+				<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" />
+				<span id="phoneNumberError" class="error"></span>
+			</div>
+
+			<div class="field-container">
+				<label for="zipcode">ZipCode*:</label>
+				<input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" />
+				<span id="zipcodeError" class="error"></span>
+			</div>
+			 
+			<div class="field-container">
+				<label for="source">How did you hear*:</label>
+				<input type='checkbox' name="source" value="facebook" id="source" /> Facebook
+				<input type='checkbox' name="source" value="google" id="source" /> Google
+				<input type='checkbox' name="source" value="yelp" id="source" /> Yelp 
+				<span id="sourceError" class="error"></span>
+			</div>
+
+			<div class="field-container">
+				<label for="dropdown">Select a Coffee:</label>
+				<select id="dropdown" name="dropdown">
+				  <option value="" selected disabled>-- Select an option --</option>
+				  <option value="Frappuccino">Frappuccino</option>
+				  <option value="Cappuccino">Cappuccino</option>
+				  <option value="White Mocha">White Mocha</option>
+				  <option value="Espresso">Espresso</option>
+				  <option value="Hot Chocolate">Hot Chocolate</option>
+				</select>
+			  </div>
+	  
+			<div class="dynamic-checkbox-container" id="dynamicCheckboxContainer"></div>
+
+			<div class="field-container">
+				<label for="address2">Street Address 2:</label>
+				<input type="text" name="address2" id="address2" placeholder="Street Address 2" />
+				<span id="address2Counter" class="counter">0/20 characters used</span> <!-- Counter span -->
+			</div>
+
+			<div class="field-container">
+				<label for="comments">Comments*:</label>
+				<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25"></textarea>
+				<span id="commentsError" class="error"></span>
+			</div>
+
+			<div class="field-container">
+				<input type="Submit">
+				<input type="Reset">
+			</div>
+
+		 </form>
+		 <table id="submittedDataTable" style="display: none;">
+			<thead>
+			  <tr>
+				<th>Title</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>ZipCode</th>
+				<th>Source</th>
+				<th>Coffee</th>
+				<th>Additional Instructions</th>
+				<th>Address 2</th>
+				<th>Comments</th>
+			  </tr>
+			</thead>
+			<tbody id="tableBody"></tbody>
+		  </table>
+
+  
+	 </main>
+ </div>
+
+<script src="script.js"></script>
+ </body>
+</html>
