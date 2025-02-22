@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+
+    <!-- Login Page -->
+    <div id="loginPage">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label>Email:</label>
+            <input type="text" id="email">
+            <span class="error" id="emailError"></span>
+
+            <label>Username:</label>
+            <input type="text" id="username">
+            <span class="error" id="usernameError"></span>
+
+            <label>Password:</label>
+            <input type="password" id="password">
+            <span class="error" id="passwordError"></span>
+
+            <label>Confirm Password:</label>
+            <input type="password" id="confirmPassword">
+            <span class="error" id="confirmPasswordError"></span>
+
+            <button type="button" id="loginBtn" disabled>Login</button>
+        </form>
+    </div>
+
+    <!-- Calculator Page (Initially Hidden) -->
+    <div id="calculatorPage" style="display: none;">
+        <h2>Welcome, <span id="loggedInUser"></span></h2>
+
+        <div class="calculator">
+            <input type="text" id="num1" placeholder="Number 1">
+            <span class="error" id="num1Error"></span>
+
+            <input type="text" id="num2" placeholder="Number 2">
+            <span class="error" id="num2Error"></span>
+
+            <div class="buttons">
+                <button class="operation" data-op="add">Add</button>
+                <button class="operation" data-op="subtract">Subtract</button>
+                <button class="operation" data-op="multiply">Multiply</button>
+                <button class="operation" data-op="divide">Divide</button>
+            </div>
+
+            <input type="text" id="result" placeholder="Result" readonly>
+        </div>
+        <div id="resultError" style="color: red;"></div>
+    </div>
+
+</body>
+
+</html>
