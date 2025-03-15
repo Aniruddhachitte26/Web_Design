@@ -1,0 +1,222 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $base-font-size;
+  scroll-behavior: smooth;
+  
+  @include respond-below('sm') {
+    font-size: calc(#{$base-font-size} - 1px);
+  }
+}
+
+body {
+  font-family: $primary-font;
+  font-size: $medium-font-size;
+  line-height: 1.6;
+  color: $black;
+  background-color: $light-gray;
+  overflow-x: hidden; 
+  
+  &.menu-open {
+    overflow: hidden; 
+    
+    @include respond-to('md') {
+      overflow: auto; 
+    }
+  }
+}
+
+%container {
+  @include container;
+}
+
+%section-spacing {
+  @include section-spacing;
+}
+
+%heading-styles {
+  font-family: $secondary-font;
+  font-weight: 700;
+  line-height: 1.2;
+  color: $black;
+}
+
+%link-styles {
+  text-decoration: none;
+  color: $primary-color;
+  transition: color $transition-speed $transition-timing;
+  
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+%list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+%image-styles {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend %heading-styles;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  @include font-style($xxxl-font-size, 700, 1.2);
+  
+  @include respond-below('sm') {
+    font-size: calc(#{$xxl-font-size} + 0.5rem);
+  }
+}
+
+h2 {
+  @include font-style($xxl-font-size, 700, 1.2);
+  
+  @include respond-below('sm') {
+    font-size: calc(#{$xl-font-size} + 0.25rem);
+  }
+}
+
+h3 {
+  @include font-style($xl-font-size, 600, 1.3);
+  
+  @include respond-below('sm') {
+    font-size: $large-font-size;
+  }
+}
+
+h4 {
+  @include font-style($large-font-size, 600, 1.3);
+  
+  @include respond-below('sm') {
+    font-size: calc(#{$medium-font-size} + 0.125rem);
+  }
+}
+
+p {
+  margin-bottom: $spacing-md;
+  
+  @include respond-below('sm') {
+    margin-bottom: $spacing-sm;
+  }
+}
+
+a {
+  @extend %link-styles;
+}
+
+ul, ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-md;
+  
+  @include respond-below('sm') {
+    margin-bottom: $spacing-sm;
+    padding-left: $spacing-sm;
+  }
+}
+
+img {
+  @extend %image-styles;
+}
+
+button {
+  cursor: pointer;
+  font-family: $primary-font;
+}
+
+input, select, textarea {
+  font-family: $primary-font;
+  font-size: $medium-font-size;
+}
+
+.container {
+  @extend %container;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.hidden {
+  display: none;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+  position: relative;
+  padding-bottom: $spacing-md;
+  
+  @include respond-below('sm') {
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-sm;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: $primary-color;
+    
+    @include respond-below('sm') {
+      width: 40px;
+      height: 2px;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-weight: 600;
+  text-align: center;
+  transition: all $transition-speed $transition-timing;
+  border: none;
+  cursor: pointer;
+  
+  @include respond-below('sm') {
+    padding: $spacing-xs $spacing-md;
+    font-size: $small-font-size;
+  }
+  
+  &-primary {
+    @include button($primary-color, $white);
+  }
+  
+  &-secondary {
+    @include button($secondary-color, $white);
+  }
+  
+  &-light {
+    @include button($white, $black);
+    border: 1px solid $medium-gray;
+  }
+  
+  &-block {
+    display: block;
+    width: 100%;
+  }
+}

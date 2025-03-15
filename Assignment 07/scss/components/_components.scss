@@ -1,0 +1,638 @@
+.main-header {
+  background-color: $white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: z('header');
+  height: var(--header-height);
+
+  .container {
+    @include flex(row, space-between, center);
+    height: 100%;
+  }
+
+  .logo {
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0;
+
+      @include respond-below('sm') {
+        font-size: 1.5rem;
+      }
+
+      span {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .main-nav {
+    @include respond-below('md') {
+      position: fixed;
+      top: var(--header-height);
+      left: -$mobile-menu-width;
+      width: $mobile-menu-width;
+      height: calc(100vh - var(--header-height));
+      background-color: $white;
+      z-index: z('mobile-nav');
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      transition: left $transition-speed $transition-timing;
+      overflow-y: auto;
+      padding: $spacing-md;
+      
+      &.open {
+        left: 0;
+      }
+    }
+
+    ul {
+      @extend %list-reset;
+      @include flex(row, center, center);
+      
+      @include respond-below('md') {
+        @include flex(column, flex-start, flex-start);
+        gap: $spacing-md;
+      }
+
+      li {
+        margin: 0 $spacing-md;
+        
+        @include respond-below('md') {
+          margin: 0;
+          width: 100%;
+        }
+
+        a {
+          color: $black;
+          font-weight: 500;
+          padding: $spacing-xs 0;
+          position: relative;
+          display: block;
+          
+          @include respond-below('md') {
+            padding: $spacing-sm;
+            border-bottom: 1px solid $light-gray;
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: $primary-color;
+            transition: width $transition-speed $transition-timing;
+            
+            @include respond-below('md') {
+              display: none;
+            }
+          }
+
+          &:hover::after, &.active::after {
+            width: 100%;
+          }
+
+          &.active {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .nav-icons {
+    @include flex(row, flex-end, center);
+    gap: $spacing-md;
+
+    a {
+      color: $dark-gray;
+      font-size: $large-font-size;
+      transition: color $transition-speed $transition-timing;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    .cart-icon {
+      position: relative;
+
+      .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: $primary-color;
+        color: $white;
+        font-size: 0.7rem;
+        width: 16px;
+        height: 16px;
+        border-radius: $border-radius-round;
+        @include flex(row, center, center);
+      }
+    }
+  }
+  
+  .mobile-menu-toggle {
+    @include hamburger-icon;
+    display: none;
+    
+    @include respond-below('md') {
+      display: block;
+    }
+  }
+}
+
+.mobile-menu-backdrop {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  background-color: rgba($black, 0.5);
+  z-index: z('backdrop');
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-speed $transition-timing,
+              visibility $transition-speed $transition-timing;
+  
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  @include respond-to('md') {
+    display: none;
+  }
+}
+
+.product-card {
+  @include card;
+  position: relative;
+  transition: transform $transition-speed $transition-timing,
+              box-shadow $transition-speed $transition-timing;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+    .product-actions {
+      opacity: 1;
+    }
+  }
+
+  .product-badge {
+    @include badge;
+    position: absolute;
+    top: $spacing-md;
+    left: $spacing-md;
+    z-index: 1;
+    @include generate-badges;
+  }
+
+  .product-image {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    margin-bottom: $spacing-md;
+    overflow: hidden;
+
+    img {
+      @include img-cover;
+      transition: transform $transition-speed $transition-timing;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-actions {
+      @include flex(row, center, center);
+      position: absolute;
+      bottom: $spacing-md;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transition: opacity $transition-speed $transition-timing;
+      gap: $spacing-sm;
+
+      .action-btn {
+        @include flex(row, center, center);
+        width: 40px;
+        height: 40px;
+        background-color: $white;
+        border-radius: $border-radius-round;
+        color: $black;
+        transition: background-color $transition-speed $transition-timing,
+                    color $transition-speed $transition-timing;
+
+        &:hover {
+          background-color: $primary-color;
+          color: $white;
+        }
+        
+        @include respond-below('sm') {
+          width: 34px;
+          height: 34px;
+          font-size: $small-font-size;
+        }
+      }
+    }
+  }
+
+  .product-info {
+    padding: 0 $spacing-md $spacing-md;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      @include truncate(2);
+      margin-bottom: $spacing-sm;
+      font-size: $large-font-size;
+      
+      @include respond-below('sm') {
+        font-size: $medium-font-size;
+      }
+    }
+
+    .product-rating {
+      @include flex(row, flex-start, center);
+      margin-bottom: $spacing-sm;
+      color: $warning;
+      
+      span {
+        color: $dark-gray;
+        margin-left: $spacing-xs;
+        font-size: $small-font-size;
+      }
+    }
+
+    .product-price {
+      @include flex(row, flex-start, center);
+      margin-bottom: $spacing-md;
+      margin-top: auto;
+      
+      .price {
+        font-size: $large-font-size;
+        font-weight: 700;
+        color: $primary-color;
+        
+        @include respond-below('sm') {
+          font-size: $medium-font-size;
+        }
+      }
+      
+      .original-price {
+        font-size: $medium-font-size;
+        color: $dark-gray;
+        text-decoration: line-through;
+        margin-right: $spacing-sm;
+        
+        @include respond-below('sm') {
+          font-size: $small-font-size;
+        }
+      }
+    }
+    
+    .btn {
+      margin-top: auto;
+      
+      @include respond-below('sm') {
+        padding: $spacing-xs $spacing-sm;
+        font-size: $small-font-size;
+      }
+    }
+  }
+}
+
+.category-card {
+  position: relative;
+  height: 200px;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  
+  @include respond-below('sm') {
+    height: 160px;
+  }
+  
+  &::before {
+    @include overlay(rgba($black, 0.3));
+    content: '';
+  }
+  
+  .category-content {
+    position: relative;
+    z-index: 2;
+    @include flex(column, center, center);
+    height: 100%;
+    text-align: center;
+    padding: $spacing-md;
+    
+    h3 {
+      color: $white;
+      margin-bottom: $spacing-md;
+      
+      @include respond-below('sm') {
+        margin-bottom: $spacing-sm;
+        font-size: $medium-font-size;
+      }
+    }
+    
+    .btn {
+      @include respond-below('sm') {
+        padding: $spacing-xs $spacing-sm;
+        font-size: $small-font-size;
+      }
+    }
+  }
+  
+  @each $category in (kitchen, bathroom, fashion, home) {
+    &.#{$category} {
+      background: url('Pictures/categories/#{$category}.jpg') center/cover no-repeat;
+    }
+  }
+}
+
+.testimonial-card {
+  @include card($spacing-lg);
+  height: 100%;
+  
+  @include respond-below('sm') {
+    padding: $spacing-md;
+  }
+  
+  .testimonial-rating {
+    margin-bottom: $spacing-md;
+    color: $warning;
+  }
+  
+  .testimonial-text {
+    font-style: italic;
+    margin-bottom: $spacing-lg;
+    position: relative;
+    
+    @include respond-below('sm') {
+      margin-bottom: $spacing-md;
+    }
+    
+    &::before, &::after {
+      content: '"';
+      font-size: $xxxl-font-size;
+      color: $medium-gray;
+      position: absolute;
+      
+      @include respond-below('sm') {
+        font-size: $xxl-font-size;
+      }
+    }
+    
+    &::before {
+      top: -20px;
+      left: -10px;
+      
+      @include respond-below('sm') {
+        top: -15px;
+        left: -5px;
+      }
+    }
+    
+    &::after {
+      bottom: -40px;
+      right: -10px;
+      
+      @include respond-below('sm') {
+        bottom: -30px;
+        right: -5px;
+      }
+    }
+  }
+  
+  .testimonial-author {
+    @include flex(row, flex-start, center);
+    
+    .author-image {
+      width: 50px;
+      height: 50px;
+      border-radius: $border-radius-round;
+      margin-right: $spacing-md;
+      
+      @include respond-below('sm') {
+        width: 40px;
+        height: 40px;
+        margin-right: $spacing-sm;
+      }
+    }
+    
+    .author-info {
+      h4 {
+        margin-bottom: 0;
+        
+        @include respond-below('sm') {
+          font-size: $medium-font-size;
+        }
+      }
+      
+      p {
+        margin-bottom: 0;
+        color: $dark-gray;
+        font-size: $small-font-size;
+      }
+    }
+  }
+}
+
+.newsletter {
+  background-color: $secondary-color;
+  color: $white;
+  @extend %section-spacing;
+
+  .newsletter-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    
+    h2 {
+      color: $white;
+    }
+  }
+  
+  .newsletter-form {
+    @include flex(row, center, stretch, nowrap);
+    margin-top: $spacing-lg;
+    
+    @include respond-below('xs') {
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+    
+    input {
+      flex: 1;
+      padding: $spacing-md;
+      border: none;
+      border-radius: $border-radius-md 0 0 $border-radius-md;
+      
+      @include respond-below('xs') {
+        border-radius: $border-radius-md;
+        padding: $spacing-sm $spacing-md;
+      }
+    }
+    
+    button {
+      border-radius: 0 $border-radius-md $border-radius-md 0;
+      
+      @include respond-below('xs') {
+        border-radius: $border-radius-md;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.feature-item {
+  text-align: center;
+  padding: $spacing-md;
+  
+  .feature-icon {
+    @include flex(row, center, center);
+    width: 80px;
+    height: 80px;
+    background-color: rgba($primary-color, 0.1);
+    border-radius: $border-radius-round;
+    margin: 0 auto $spacing-md;
+    color: $primary-color;
+    font-size: $xxl-font-size;
+    
+    @include respond-below('sm') {
+      width: 60px;
+      height: 60px;
+      font-size: $xl-font-size;
+    }
+  }
+  
+  h3 {
+    margin-bottom: $spacing-sm;
+    
+    @include respond-below('sm') {
+      font-size: $medium-font-size;
+    }
+  }
+  
+  p {
+    @include respond-below('sm') {
+      font-size: $small-font-size;
+    }
+  }
+}
+
+
+.filter-group {
+  margin-bottom: $spacing-lg;
+  
+  h3 {
+    margin-bottom: $spacing-md;
+    font-size: $large-font-size;
+    
+    @include respond-below('sm') {
+      font-size: $medium-font-size;
+    }
+  }
+  
+  .filter-list {
+    @extend %list-reset;
+    
+    li {
+      margin-bottom: $spacing-sm;
+      
+      label {
+        @include flex(row, flex-start, center);
+        cursor: pointer;
+        
+        input[type="checkbox"] {
+          margin-right: $spacing-sm;
+        }
+        
+        .count {
+          margin-left: $spacing-xs;
+          color: $dark-gray;
+          font-size: $small-font-size;
+        }
+      }
+    }
+    
+    &.rating-filter {
+      .rating-stars {
+        margin-right: $spacing-xs;
+        color: $warning;
+      }
+    }
+  }
+}
+
+.price-slider {
+  padding: $spacing-sm 0;
+  
+  .price-range {
+    .slider {
+      width: 100%;
+      margin-bottom: $spacing-sm;
+    }
+    
+    .price-values {
+      @include flex(row, space-between, center);
+      color: $dark-gray;
+      font-size: $small-font-size;
+    }
+  }
+}
+
+.pagination {
+  @include flex(row, center, center);
+  margin-top: $spacing-xl;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+  
+  @include respond-below('sm') {
+    margin-top: $spacing-lg;
+  }
+  
+  .pagination-btn {
+    @include flex(row, center, center);
+    width: 36px;
+    height: 36px;
+    border-radius: $border-radius-sm;
+    background-color: $white;
+    border: 1px solid $medium-gray;
+    transition: all $transition-speed $transition-timing;
+    
+    @include respond-below('sm') {
+      width: 32px;
+      height: 32px;
+      font-size: $small-font-size;
+    }
+    
+    &:hover:not(.disabled) {
+      background-color: $primary-color;
+      color: $white;
+      border-color: $primary-color;
+    }
+    
+    &.active {
+      background-color: $primary-color;
+      color: $white;
+      border-color: $primary-color;
+    }
+    
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  
+  .pagination-dots {
+    padding: 0 $spacing-xs;
+  }
+}

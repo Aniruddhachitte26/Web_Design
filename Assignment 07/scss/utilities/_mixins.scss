@@ -1,0 +1,259 @@
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint: #{$breakpoint}. Available breakpoints are: #{map-keys($breakpoints)}";
+  }
+}
+
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and (max-width: map-get($breakpoints, $breakpoint) - 1px) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint: #{$breakpoint}. Available breakpoints are: #{map-keys($breakpoints)}";
+  }
+}
+
+@mixin respond-between($lower, $upper) {
+  @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+    @media screen and (min-width: map-get($breakpoints, $lower)) and (max-width: map-get($breakpoints, $upper) - 1px) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint: #{$lower} or #{$upper}. Available breakpoints are: #{map-keys($breakpoints)}";
+  }
+}
+
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin grid($columns: 1, $gap: $spacing-md) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+@mixin responsive-grid($cols-sm: 1, $cols-md: 2, $cols-lg: 3, $gap: $spacing-md) {
+  display: grid;
+  gap: $gap;
+  grid-template-columns: repeat($cols-sm, 1fr);
+  
+  @include respond-to('sm') {
+    grid-template-columns: repeat($cols-md, 1fr);
+  }
+  
+  @include respond-to('lg') {
+    grid-template-columns: repeat($cols-lg, 1fr);
+  }
+}
+
+@mixin font-style($size: $medium-font-size, $weight: normal, $line-height: 1.5) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin responsive-font($min-size, $max-size, $min-width: map-get($breakpoints, 'xs'), $max-width: map-get($breakpoints, 'lg')) {
+  font-size: $min-size;
+  
+  @media screen and (min-width: $min-width) {
+    font-size: calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}));
+  }
+  
+  @media screen and (min-width: $max-width) {
+    font-size: $max-size;
+  }
+}
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+@mixin heading($size, $margin-bottom: $spacing-md) {
+  font-family: $secondary-font;
+  font-size: $size;
+  font-weight: 700;
+  margin-bottom: $margin-bottom;
+}
+
+@mixin button($bg-color: $primary-color, $text-color: $white, $hover-lightness: 10%) {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color $transition-speed $transition-timing;
+  
+  &:hover {
+    background-color: lighten($bg-color, $hover-lightness);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+@mixin card($padding: $spacing-md, $border-radius: $border-radius-md, $bg-color: $white) {
+  background-color: $bg-color;
+  border-radius: $border-radius;
+  padding: $padding;
+  box-shadow: var(--card-shadow);
+}
+
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@mixin badge($color: $primary-color, $size: $small-font-size) {
+  display: inline-block;
+  padding: $spacing-xs $spacing-sm;
+  background-color: $color;
+  color: $white;
+  font-size: $size;
+  font-weight: bold;
+  border-radius: $border-radius-sm;
+  text-transform: uppercase;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@function z($layer) {
+  @if not map-has-key($z-index, $layer) {
+    @error "No z-index defined for '#{$layer}'";
+  }
+  @return map-get($z-index, $layer);
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $container-padding;
+}
+
+@mixin section-spacing($padding-y: $spacing-xl) {
+  padding: $padding-y 0;
+}
+
+@mixin overlay($bg-color: rgba($black, 0.5), $z-index: 1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $bg-color;
+  z-index: $z-index;
+}
+
+@mixin img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@mixin generate-badges {
+  @each $name, $color in $badge-colors {
+    &.#{$name} {
+      background-color: $color;
+    }
+  }
+}
+
+@mixin hamburger-icon {
+  width: 25px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  
+  span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: $black;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+    
+    &:nth-child(1) {
+      top: 0px;
+    }
+    
+    &:nth-child(2), &:nth-child(3) {
+      top: 8px;
+    }
+    
+    &:nth-child(4) {
+      top: 16px;
+    }
+  }
+  
+  &.open {
+    span {
+      &:nth-child(1) {
+        top: 8px;
+        width: 0%;
+        left: 50%;
+      }
+      
+      &:nth-child(2) {
+        transform: rotate(45deg);
+      }
+      
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+      
+      &:nth-child(4) {
+        top: 8px;
+        width: 0%;
+        left: 50%;
+      }
+    }
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

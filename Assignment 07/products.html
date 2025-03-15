@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - EcoShop</title>
+    <link rel="shortcut icon" href="Pictures\Favicon.jpg" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <h1>Eco<span>Shop</span></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#" class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">3</span></a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop"></div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Products
+            </div>
+        </div>
+    </section>
+
+    <section class="products-area">
+        <div class="container">
+            <div class="products-layout">
+                <aside class="filters-sidebar">
+                    <div class="filter-group">
+                        <h3>Categories</h3>
+                        <ul class="filter-list">
+                            <li>
+                                <label>
+                                    <input type="checkbox" checked>
+                                    <span>All Products</span>
+                                    <span class="count">(42)</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Kitchen</span>
+                                    <span class="count">(12)</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Bathroom</span>
+                                    <span class="count">(8)</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Fashion</span>
+                                    <span class="count">(15)</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Home</span>
+                                    <span class="count">(7)</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Price Range</h3>
+                        <div class="price-slider">
+                            <div class="price-range">
+                                <input type="range" min="0" max="100" value="75" class="slider">
+                                <div class="price-values">
+                                    <span>$0</span>
+                                    <span>$75</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Material</h3>
+                        <ul class="filter-list">
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Bamboo</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Organic Cotton</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Recycled Plastic</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Cork</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span>Hemp</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Rating</h3>
+                        <ul class="filter-list rating-filter">
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span>& Up</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span>& Up</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span>& Up</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox">
+                                    <span class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span>& Up</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="btn btn-primary apply-filters">Apply Filters</button>
+                </aside>
+
+                <main class="products-content">
+                    <div class="products-controls">
+                        <div class="product-count">
+                            Showing <span>12</span> of <span>42</span> products
+                        </div>
+                        <div class="sorting-controls">
+                            <label for="sort-by">Sort by:</label>
+                            <select id="sort-by">
+                                <option selected>Featured</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Customer Rating</option>
+                                <option>Newest First</option>
+                            </select>
+                        </div>
+                        <div class="view-controls">
+                            <button class="grid-view active"><i class="fas fa-th"></i></button>
+                            <button class="list-view"><i class="fas fa-list"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-badge">New</div>
+                            <div class="product-image">
+                                <img src="Pictures\bamboo-bottle-03.jpg" alt="Bamboo Water Bottle">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Bamboo Water Bottle</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(42)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$24.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-badge sale">Sale</div>
+                            <div class="product-image">
+                                <img src="Pictures\Tote Bag.jpg" alt="Organic Cotton Tote Bag">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Organic Cotton Tote Bag</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(87)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="original-price">$19.99</span>
+                                    <span class="price">$14.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="Pictures\Sunglass.jpg" alt="Recycled Plastic Sunglasses">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Recycled Plastic Sunglasses</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(35)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$39.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-badge limited">Limited</div>
+                            <div class="product-image">
+                                <img src="Pictures\Cutlery.jpg" alt="Bamboo Cutlery Set">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Bamboo Cutlery Set</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(128)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$18.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="Pictures\food wrap.jpg" alt="Beeswax Food Wraps">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Beeswax Food Wraps</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(76)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$15.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-badge sale">Sale</div>
+                            <div class="product-image">
+                                <img src="Pictures\yoga mat.jpg" alt="Cork Yoga Mat">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Cork Yoga Mat</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(54)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="original-price">$64.99</span>
+                                    <span class="price">$49.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="Pictures\Bagpack.jpg" alt="Hemp Backpack">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Hemp Backpack</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(29)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$45.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-badge">New</div>
+                            <div class="product-image">
+                                <img src="Pictures\Phone Case.jpg" alt="Biodegradable Phone Case">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Biodegradable Phone Case</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(21)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$19.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="Pictures\Bowl Set.jpg" alt="Coconut Bowl Set">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Coconut Bowl Set</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(47)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$29.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-badge limited">Limited</div>
+                            <div class="product-image">
+                                <img src="Pictures\Loofa Set.jpg" alt="Natural Loofah Set">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Natural Loofah Set</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(83)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$12.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-badge sale">Sale</div>
+                            <div class="product-image">
+                                <img src="Pictures\Stationary Set.jpg" alt="Recycled Stationery Set">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Recycled Stationery Set</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>(34)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="original-price">$22.99</span>
+                                    <span class="price">$17.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="Pictures\Mesh Bag.jpg" alt="Organic Mesh Produce Bags">
+                                <div class="product-actions">
+                                    <button class="action-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Organic Mesh Produce Bags</h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(59)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price">$9.99</span>
+                                </div>
+                                <button class="btn btn-secondary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pagination">
+                        <button class="pagination-btn prev disabled"><i class="fas fa-chevron-left"></i></button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <span class="pagination-dots">...</span>
+                        <button class="pagination-btn">7</button>
+                        <button class="pagination-btn next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Join Our Eco-Conscious Community</h2>
+                <p>Subscribe to our newsletter for sustainable living tips and exclusive offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3 class="footer-title">EcoShop</h3>
+                    <p>We're on a mission to make sustainable living accessible, affordable, and beautiful for everyone.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-title">Shop</h3>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Sale</a></li>
+                        <li><a href="#">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-title">Customer Care</h3>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-title">Company</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Ethical Practices</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3 class="footer-title">Contact Us</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Green Street, Eco City</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> hello@ecoshop.com</p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoShop. All rights reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+            const body = document.body;
+    
+            function toggleMobileMenu() {
+                mobileMenuToggle.classList.toggle('open');
+                mainNav.classList.toggle('open');
+                mobileMenuBackdrop.classList.toggle('open');
+                body.classList.toggle('menu-open');
+            }
+    
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+            mobileMenuBackdrop.addEventListener('click', toggleMobileMenu);
+    
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (mainNav.classList.contains('open')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+    
+            const currentPage = window.location.pathname.split('/').pop();
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
