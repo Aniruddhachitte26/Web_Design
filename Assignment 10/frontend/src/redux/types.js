@@ -1,0 +1,18 @@
+// Auth action types
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGOUT = 'LOGOUT';
+
+// User action types
+export const FETCH_USERS_REQUEST = 'FETCH_USERS_REQUEST';
+export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
+export const FETCH_USERS_FAILURE = 'FETCH_USERS_FAILURE';
+
+// Job action types
+export const CREATE_JOB_REQUEST = 'CREATE_JOB_REQUEST';
+export const CREATE_JOB_SUCCESS = 'CREATE_JOB_SUCCESS';
+export const CREATE_JOB_FAILURE = 'CREATE_JOB_FAILURE';
+export const FETCH_JOBS_REQUEST = 'FETCH_JOBS_REQUEST';
+export const FETCH_JOBS_SUCCESS = 'FETCH_JOBS_SUCCESS';
+export const FETCH_JOBS_FAILURE = 'FETCH_JOBS_FAILURE';

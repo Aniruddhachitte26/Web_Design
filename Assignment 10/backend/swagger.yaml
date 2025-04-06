@@ -1,0 +1,177 @@
+openapi: 3.0.0
+info:
+  title: User API
+  version: 1.0.0
+  description: >
+    API endpoints for managing users and uploading images.
+    This documentation covers user creation, editing, deletion, retrieval,
+    and image uploads with validations for input and file format.
+servers:
+  - url: http://localhost:3000
+    description: Local development server on port 3000
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/northeasternuniversi-585/Users/1.0.0
+paths:
+  /user:
+    post:
+      summary: Create User
+      description: Create a new user with validated full name, email, and password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullName:
+                  type: string
+                  example: "John Doe"
+                email:
+                  type: string
+                  format: email
+                  example: "john.doe@example.com"
+                password:
+                  type: string
+                  format: password
+                  example: "StrongPass123!"
+              required:
+                - fullName
+                - email
+                - password
+      responses:
+        '201':
+          description: User created successfully.
+          content:
+            application/json:
+              example:
+                message: "User created successfully."
+        '400':
+          description: Bad Request - Validation Error
+          content:
+            application/json:
+              example:
+                error: "Validation failed."
+  /user/edit:
+    put:
+      summary: Update User Details
+      description: Update a user's full name and/or password. Email is used for identification and cannot be changed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "john.doe@example.com"
+                fullName:
+                  type: string
+                  example: "John Doe"
+                password:
+                  type: string
+                  format: password
+                  example: "NewStrongPass123!"
+              required:
+                - email
+      responses:
+        '200':
+          description: User details updated successfully.
+          content:
+            application/json:
+              example:
+                message: "User details updated successfully."
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              example:
+                error: "Validation failed."
+        '404':
+          description: User Not Found
+          content:
+            application/json:
+              example:
+                error: "User not found."
+  /getUser:
+    get:
+      summary: Retrieve All Users
+      description: Retrieve a list of all users with their full name and email.
+      responses:
+        '200':
+          description: Successfully retrieved all users.
+          content:
+            application/json:
+              example:
+                users:
+                  - fullName: "John Doe"
+                    email: "john.doe@example.com"
+  /user/uploadImage:
+    post:
+      summary: Upload User Image
+      description: >
+        Upload an image file for a user identified by their email.
+        Only JPEG, PNG, and GIF formats are allowed. Only one image per user is permitted.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "john.doe@example.com"
+                image:
+                  type: string
+                  format: binary
+              required:
+                - email
+                - image
+      responses:
+        '201':
+          description: Image uploaded successfully.
+          content:
+            application/json:
+              example:
+                message: "Image uploaded successfully."
+                filePath: "/images/filename.extension"
+        '400':
+          description: Validation error (invalid file format or image already exists).
+          content:
+            application/json:
+              example:
+                error: "Invalid file format. Only JPEG, PNG, and GIF are allowed."
+        '404':
+          description: User not found.
+          content:
+            application/json:
+              example:
+                error: "User not found."
+  /user/{email}:
+    delete:
+      summary: Delete User by Email
+      description: Delete a user from the database using their email.
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            format: email
+          example: "john.doe@example.com"
+      responses:
+        '200':
+          description: User deleted successfully.
+          content:
+            application/json:
+              example:
+                message: "User deleted successfully."
+        '404':
+          description: User not found.
+          content:
+            application/json:
+              example:
+                error: "User not found."
